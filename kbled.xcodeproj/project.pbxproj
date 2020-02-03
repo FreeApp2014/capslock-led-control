@@ -11,6 +11,8 @@
 		847F5CAA23D82D34002C4C29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F5CA923D82D34002C4C29 /* ViewController.swift */; };
 		847F5CAC23D82D34002C4C29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847F5CAB23D82D34002C4C29 /* Assets.xcassets */; };
 		847F5CAF23D82D34002C4C29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847F5CAD23D82D34002C4C29 /* Main.storyboard */; };
+		847F5CB823D82D61002C4C29 /* kb.c in Sources */ = {isa = PBXBuildFile; fileRef = 847F5CB723D82D61002C4C29 /* kb.c */; };
+		847F5CBC23D835D7002C4C29 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847F5CBB23D835D7002C4C29 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,10 @@
 		847F5CAB23D82D34002C4C29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		847F5CAE23D82D34002C4C29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		847F5CB023D82D34002C4C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847F5CB623D82D61002C4C29 /* kbled-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kbled-Bridging-Header.h"; sourceTree = "<group>"; };
+		847F5CB723D82D61002C4C29 /* kb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = kb.c; path = kbled/kb.c; sourceTree = "<group>"; };
+		847F5CB923D834B5002C4C29 /* kbheader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kbheader.h; sourceTree = "<group>"; };
+		847F5CBB23D835D7002C4C29 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847F5CBC23D835D7002C4C29 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +43,12 @@
 		847F5C9B23D82D34002C4C29 = {
 			isa = PBXGroup;
 			children = (
+				847F5CB923D834B5002C4C29 /* kbheader.h */,
+				847F5CB723D82D61002C4C29 /* kb.c */,
 				847F5CA623D82D34002C4C29 /* kbled */,
 				847F5CA523D82D34002C4C29 /* Products */,
+				847F5CB623D82D61002C4C29 /* kbled-Bridging-Header.h */,
+				847F5CBA23D835D7002C4C29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +70,14 @@
 				847F5CB023D82D34002C4C29 /* Info.plist */,
 			);
 			path = kbled;
+			sourceTree = "<group>";
+		};
+		847F5CBA23D835D7002C4C29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				847F5CBB23D835D7002C4C29 /* IOKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +113,7 @@
 					847F5CA323D82D34002C4C29 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = N6M3GGC92B;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				847F5CAA23D82D34002C4C29 /* ViewController.swift in Sources */,
+				847F5CB823D82D61002C4C29 /* kb.c in Sources */,
 				847F5CA823D82D34002C4C29 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,12 +267,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N6M3GGC92B;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = kbled/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = space.freeappsw.kbled;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kbled-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -260,12 +287,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N6M3GGC92B;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = kbled/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = space.freeappsw.kbled;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kbled-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
